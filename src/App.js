@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "axios";
+import App1 from "./random-quote";
+import AddQuote from "./add-quote";
+import LocalQuote from "./local-quote";
+import ListAll from "./list-all"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+
+
+const AppRouter = () => (
+  <Router>
+    <div className="container">
+      <div className="col-md-12">
+        <div>
+          <Link className="alert alert-danger" role="alert" to="/">Random Quote(Api)</Link> | <Link className="alert alert-dark" role="alert" to="/rql">Random Quote(local)</Link> | <Link className="alert alert-danger" role="alert" to="/aq/">Add Quote</Link> | <Link className="alert alert-dark" role="alert" to="/laq">List all quotes</Link>
+
+          <Route path="/" exact component={App1} />
+          <Route path="/rql/" component={LocalQuote} />
+          <Route path="/aq/" component={AddQuote} />
+          <Route path="/laq/" component={ListAll} />
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  </Router>
+);
 
-export default App;
+export default AppRouter;

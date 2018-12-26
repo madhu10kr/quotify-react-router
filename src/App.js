@@ -5,7 +5,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Project from './components/project'
 
 
-
 class App extends Component {
   render() {
     return (

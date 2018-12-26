@@ -54,6 +54,7 @@ class Project extends Component {
             showProductDetails:true,
         })
     }
+    
 
   render() {
     return (

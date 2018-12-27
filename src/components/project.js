@@ -12,7 +12,7 @@ class Project extends Component {
             text1:"",
             text2:"",
             showProductDetails:false,
-            passingValue:""
+            titlevalue:"",
         }
     }
 
@@ -42,9 +42,10 @@ class Project extends Component {
         })
     }
 
-    handleView = (e) => {
-        this.setState({
-            passingValue:e.target.value,
+    handleView = async (e) => {
+        console.log(e.target.title)
+        await this.setState({
+            titlevalue:e.target.title,
         });
         this.updateData();
     }
@@ -59,16 +60,16 @@ class Project extends Component {
   render() {
     return (
         <div>
-            {this.state.showProductDetails ? <ProjectDetails project={this.state.passingValue}/> : 
+            {this.state.showProductDetails ? <ProjectDetails project={this.state.titlevalue}/> : 
             <div>
             <div className="container">
             <div className="row">
             <div className="col-md-6">
             <h2>Project List</h2>
         <ol>
-        {this.state.array.map((project,index) => {
-            return <div><li key={index}>{project.title}</li><button value={project} onClick={this.handleView}>view</button></div>
-        })}
+        {/* {this.state.array.map((project,index) => {
+            return <div><li key={index}>{project.title}</li><button title={project.title} onClick={this.handleView}>view</button></div>
+        })} */}
         </ol>
             </div>
             <div className="col-md-6">
@@ -85,6 +86,14 @@ class Project extends Component {
         </div>
     );
   }
+}
+
+function Generate() {
+    return (
+        <div>
+            
+        </div>
+    )
 }
 
 export default Project;
